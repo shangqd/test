@@ -13,6 +13,14 @@
 
 namespace logging = boost::log;
 
+#include <boost/thread/thread.hpp>
+#include <iostream>
+
+void hello()
+{
+    std::cout << "Hello world, I''m a thread!" << std::endl;
+}
+
 //[ example_tutorial_trivial_with_filtering
 void init()
 {
@@ -23,6 +31,8 @@ void init()
 
 int main(int, char *[])
 {
+    boost::thread thrd(&hello);
+    thrd.join();
     init();
     //BOOST_LOG_TRIVIAL(trace) << "A trace severity message";
     //BOOST_LOG_TRIVIAL(debug) << "A debug severity message";
@@ -32,5 +42,3 @@ int main(int, char *[])
     //BOOST_LOG_TRIVIAL(fatal) << "A fatal severity message";
     return 0;
 }
-
-// /usr/bin/c++  -g  -rdynamic CMakeFiles/boost_test.dir/boost_test.cpp.o  -o boost_test -lboost_system -lboost_thread -lboost_log -lboost_chrono -lboost_date_time -lboost_atomic -lboost_log_setup -lboost_filesystem -lboost_regex
