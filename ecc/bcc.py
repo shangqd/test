@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 '''
-随机数 + 签名数据 × 私钥
-
+原始参考文章
+https://github.com/AlexiaChen/AlexiaChen.github.io/issues/103
 '''
 
 import hashlib
